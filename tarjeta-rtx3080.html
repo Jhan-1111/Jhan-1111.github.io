@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB Informatic - Tarjetas Gráficas RTX 3080</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1976d2;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .product-item {
+            background-color: #ffffff;
+            border: 2px solid #1976d2;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 15px;
+            position: relative;
+        }
+
+        .product-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-details {
+            padding: 10px;
+            min-height: 150px;
+            border-top: 1px solid #1976d2;
+            margin-top: 10px;
+        }
+
+        .product-details h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #0d47a1;
+            font-weight: bold;
+        }
+
+        .product-details p {
+            margin: 5px 0;
+            font-size: 15px;
+            color: #5e5e5e;
+        }
+
+        .price {
+            font-size: 22px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .buy-button {
+            background: linear-gradient(45deg, #ff5722, #ff7043);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(45deg, #ff7043, #ff5722);
+            transform: scale(1.05);
+        }
+
+        .product-item a {
+            text-decoration: none;
+        }
+
+        .back-button {
+            display: block;
+            margin: 30px auto;
+            padding: 14px 28px;
+            background-color: #1976d2;
+            color: white;
+            text-align: center;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            max-width: 300px;
+        }
+
+        .back-button:hover {
+            background-color: #0d47a1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Catálogo de Tarjetas Gráficas RTX</h1>
+        <a href="index.html" class="back-button">Volver a la Página Principal</a>
+    
+        <div class="product-grid">
+            <!-- Tarjeta Gráfica 1 -->
+            <div class="product-item">
+                <img src="gtx1650_msi.png" alt="Tarjeta Gráfica GTX 1650 MSI">
+                <div class="product-details">
+                    <h3>MSI GeForce GTX 1650 4GB</h3>
+                    <p>4GB GDDR5, Edición OC</p>
+                    <p>Boost Clock: 1.66 GHz</p>
+                    <div class="price">1830 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('MSI GeForce GTX 1650 4GB', 1830)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Tarjeta Gráfica 2 -->
+            <div class="product-item">
+                <img src="rtx3050_msi.png" alt="Tarjeta Gráfica RTX 3050 MSI">
+                <div class="product-details">
+                    <h3>MSI GeForce RTX 3050 6GB</h3>
+                    <p>6GB GDDR6, Ray Tracing</p>
+                    <p>Boost Clock: 1.78 GHz</p>
+                    <div class="price">3130 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('MSI GeForce RTX 3050 6GB', 3130)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Tarjeta Gráfica 3 -->
+            <div class="product-item">
+                <img src="rtx3060.jpg" alt="Tarjeta Gráfica RTX 3060">
+                <div class="product-details">
+                    <h3>GeForce RTX 3060 12GB</h3>
+                    <p>12GB GDDR6, 3584 CUDA Cores</p>
+                    <p>Boost Clock: 1.78 GHz</p>
+                    <div class="price">3830 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('GeForce RTX 3060 12GB', 3830)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Tarjeta Gráfica 4 -->
+            <div class="product-item">
+                <img src="rtx4070.jpg" alt="Tarjeta Gráfica RTX 4070">
+                <div class="product-details">
+                    <h3>GeForce RTX 4070 12GB</h3>
+                    <p>12GB GDDR6X, Ray Tracing</p>
+                    <p>Boost Clock: 2.48 GHz</p>
+                    <div class="price">8430 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('GeForce RTX 4070 12GB', 8430)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Tarjeta Gráfica 5 -->
+            <div class="product-item">
+                <img src="rtx4070_super_oc.webp" alt="Tarjeta Gráfica RTX 4070 Super OC">
+                <div class="product-details">
+                    <h3>GeForce RTX 4070 Super OC 12GB</h3>
+                    <p>12GB GDDR6X, Ray Tracing</p>
+                    <p>Boost Clock: 2.54 GHz</p>
+                    <div class="price">7630 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('GeForce RTX 4070 Super OC 12GB', 7630)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Tarjeta Gráfica 6 -->
+            <div class="product-item">
+                <img src="rtx4070_tii.webp" alt="Tarjeta Gráfica RTX 4070 Ti SPEC">
+                <div class="product-details">
+                    <h3>GeForce RTX 4070 Ti SPEC</h3>
+                    <p>12GB GDDR6X, Ray Tracing</p>
+                    <p>Boost Clock: 2.61 GHz</p>
+                    <div class="price">10430 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('GeForce RTX 4070 Ti SPEC', 10430)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Tarjeta Gráfica 7 -->
+            <div class="product-item">
+                <img src="rtx4060_asus.jpg" alt="Tarjeta Gráfica RTX 4060 Asus">
+                <div class="product-details">
+                    <h3>ASUS GeForce RTX 4060 8GB</h3>
+                    <p>8GB GDDR6, Ray Tracing</p>
+                    <p>Boost Clock: 2.31 GHz</p>
+                    <div class="price">13430 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('ASUS GeForce RTX 4060 8GB', 13430)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="scripts.js"></script>
+</body>
+</html>

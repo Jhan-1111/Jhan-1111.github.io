@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arma tu PC - SB Informatic</title>
+    <style>
+        /* Estilos globales */
+        /* Contenedor para centrar todo el contenido */
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0b0b0b; /* Fondo oscuro */
+    color: #080707; /* Texto blanco para buen contraste */
+    overflow-x: hidden;
+}
+.header-container {
+    background-color: #131313;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Estilo del título */
+.titulo {
+    font-size: 2.5rem;
+    color: #007acc;
+    margin-bottom: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logo alineado al lado del texto */
+.titulo img.logo {
+    max-width: 80px;
+    height: auto;
+    margin-left: 15px;
+}
+
+/* Estilo para el enlace de regreso */
+.back-link {
+    margin-top: 20px;
+}
+
+.back-link a {
+    color: #007acc;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.back-link a:hover {
+    color: #005f99;
+}
+
+
+
+/* Estilo responsivo para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 2rem;
+    }
+
+    .titulo img.logo {
+        max-width: 60px;
+        margin-left: 10px;
+    }
+
+    .imagen-gamers {
+        max-width: 100%;
+    }
+}
+
+
+        label {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #007acc;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            background-color: #f9f9f9;
+            color: #333;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #007acc;
+            outline: none;
+        }
+
+        .product-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background-color: #121212;
+    border: 1px solid #333;
+    border-radius: 2px;
+    margin-bottom: 15px;
+    min-height: 20px; /* Establece una altura mínima para hacer que los cuadros sean más largos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.product-option img {
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+    
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    background-color: #f9f9f9;
+    color: #333;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    min-height: 50px; /* Aumenta la altura mínima para que no se vea tan compacto */
+}
+
+        button {
+    background: linear-gradient(135deg, #007acc, #005f99);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #005f99, #007acc);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .reset-button {
+            background-color: #b71c1c;
+        }
+
+        .reset-button:hover {
+            background-color: #8c1414;
+        }
+
+        .total-price {
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+            margin-top: 20px;
+            grid-column: span 2;
+        }
+
+        .summary-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content h2 {
+            color: #007acc;
+            margin-bottom: 20px;
+        }
+
+        .modal-content button {
+            background-color: #007acc;
+            padding: 10px 10px;
+            margin: 10px;
+            font-size: 1rem;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            width: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #005f99;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content button:active {
+            transform: translateY(1px);
+        }
+
+        .modal-content button.cancel-button {
+            background-color: #b71c1c;
+        }
+
+        .modal-content button.cancel-button:hover {
+            background-color: #8c1414;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #007acc;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .back-link a:hover {
+            color: #005f99;
+        }
+
+        .back-link img {
+            width: 50px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        
+       <!-- Contenedor principal para centrar el contenido -->
+<div class="header-container">
+    <!-- Título con logo al lado -->
+    <h1 class="titulo">
+        Arma tu Propia PC
+        <img src="B.png" alt="Logo" class="logo">
+    </h1>
+
+    <!-- Enlace para regresar a la página principal -->
+    <div class="back-link">
+        <a href="index.html">
+            &larr; Volver a la página principal
+        </a>
+    </div>
+</div>
+
+
+        <!-- Formulario para seleccionar componentes -->
+        <h2 style="color: #5986cf; text-shadow: 0px 0px 8px #1a8db7;">COTIZA AHORA TU PC GAMER....</h2>
+        <!-- Resto del código HTML... -->
+
+        <form id="pcForm">
+            <!-- Componentes de la PC -->
+              <!-- Primera columna -->
+            <div class="grid-2-columns">
+                <div>
+                    <label for="processor">Procesador Intel/AMD</label>
+                    <div class="product-option">
+                        <img src="Especial body combat (1).png" alt="Procesador" style="width: 80px; height: 80px;">>
+                        <select id="processor" name="processor">
+                            <!-- Procesadores Intel -->
+                            <optgroup label="Tarjetas Madre Intel">
+                            <option value="Core i3 10100F - 890 Bs">Core i3 10100F </option>
+                            <option value="Core i3 12100 - 1350 Bs">Core i3 12100  </option>
+                            <option value="Core i3 10400 - 1500 Bs">Core i3 10400  </option>
+                            <option value="Core i5 10400 - 1600 Bs">Core i5 10400  </option>
+                            <option value="Core i5 10600K - 2130 Bs">Core i5 10600K </option>
+                            <option value="Core i5 11400 - 1650 Bs">Core i5 11400 </option>
+                            <option value="Core i5 11400F - 1750 Bs">Core i5 11400F </option>
+                            <option value="Core i5 12400 - 2150 Bs">Core i5 12400  </option>
+                            <option value="Core i5 13400F - 2400 Bs">Core i5 13400F </option>
+                            <option value="Core i5 13400 - 2600 Bs">Core i5 13400  </option>
+                            <option value="Core i5 13700K - 3550 Bs">Core i5 13700K </option>
+                            <option value="Core i7 10700 - 2750 Bs">Core i7 10700 </option>
+                            <option value="Core i7 11700 - 3200 Bs">Core i7 11700  </option>
+                            <option value="Core i7 12700 - 3590 Bs">Core i7 12700  </option>
+                            <option value="Core i7 12900 - 3620 Bs">Core i7 12900 </option>
+                            <option value="Core i9 12900K - 4750 Bs">Core i9 12900K </option>
+                            <option value="Core i7 14700K - 5850 Bs">Core i7 14700K </option>
+                        </optgroup>
+
+                            <!-- Procesadores AMD -->
+                            <optgroup label="Tarjetas Madre AMD">
+                            <option value="Ryzen 3 3200G - 1100 Bs">Ryzen 3 3200G </option>
+                            <option value="Ryzen 5 5600G - 1350 Bs">Ryzen 5 5600G </option>
+                            <option value="Ryzen 5 5600X - 1850 Bs">Ryzen 5 5600X </option>
+                            <option value="Ryzen 5 5600G - 2250 Bs">Ryzen 5 5600G </option>
+                            <option value="Ryzen 7 5700G - 2350 Bs">Ryzen 7 5700G </option>
+                            <option value="Ryzen 7 5700X - 2790 Bs (Bajo pedido)">Ryzen 7 5700X  (Bajo pedido)</option>
+                            <option value="Ryzen 5 5600G - 2800 Bs">Ryzen 5 5600G </option>
+                            <option value="Ryzen 7 5800G - 2800 Bs">Ryzen 7 5800G </option>
+                            <option value="Ryzen 7 7500X3D - 5500 Bs (Bajo pedido)">Ryzen 7 7500X3D  (Bajo pedido)</option>
+                            <option value="Ryzen 9 7950X - 6500 Bs (Bajo pedido)">Ryzen 9 7950X  (Bajo pedido)</option>
+                        </optgroup>
+
+                            <!-- Otras opciones -->
+                            <optgroup label=" Otras opciones ">
+                                <option value="Otro">Especificar otro modelo y precio</option>
+                                <option value="0 Bs">Vacío - 0 Bs</option>
+                            </optgroup>
+                        </select>
+                        <input type="text" id="customProcessor" name="customProcessor" placeholder="Especifica el modelo y precio" style="display: none;">
+                    </div>
+                </div>
+                
+            
+                    <div>
+                        <label for="motherboard">Tarjeta Madre Intel/AMD</label>
+                        <div class="product-option">
+                            <img src="tarjetamadre1.png" alt="Tarjeta Madre ">
+                            <select id="motherboard" name="motherboard">
+                                 <!-- Placas madre Intel -->
+                                 <optgroup label="Tarjetas Madre INTEL">
+                                 <option value="H610 HS1 - 1020 Bs">H610 HS1 </option>
+                                 <option value="Asus H610MR - 1070 Bs">Asus H610MR </option>
+                                 <option value="Asus H610M - 1320 Bs">Asus H610M </option>
+                                 <option value="B760MC MSI - 1450 Bs">B760M-C MSI </option>
+                                 <option value="B760GLP MSI - 2000 Bs">B760 GL-P MSI </option>
+                                 <option value="AsusB760A(DDR5) - 2100 Bs ">Asus B760-A  (DDR5)</option>
+                                 <option value="AsusB760AARKWi Fi(DDR5) - 2500 Bs ">Asus B760-A ARK Wi-Fi  (DDR5)</option>
+                                 <option value="B760PROASRockDS WiFi - 2260 Bs">B760 PRO ASRock DS Wi-Fi </option>
+                                 <option value="Z790PPrimeAsus DSWiFi - 3600 Bs">Z790-P Prime Asus DS Wi-Fi </option>
+                                 <option value="Z790G ROGStrixAsusDSWiFi - 5200 Bs">Z790-G ROG Strix Asus DS Wi-Fi </option>
+ 
+                                </optgroup>
+                                
+                                <!-- Placas madre AMD -->
+                                <optgroup label="Tarjetas Madre AMD">
+                                    <option value="A520 ASRock - 890 Bs">A520MR ASRock</option>
+                                    <option value="B450 ASRock - 1030 Bs">B450 ASRock</option>
+                                    <option value="B450 Pro 4S2 - 1050 Bs">B450 Pro 4S2 </option>
+                                    <option value="Asus A520M-K - 1100 Bs">Asus A520M-K </option>
+                                    <option value="Asus A520-H - 1180 Bs">Asus A520-H </option>
+                                    <option value="B550 ASRock - 1050 Bs">B550 ASRock </option>
+                                    <option value="B450 ASRock - 1450 Bs">B450 ASRock </option>
+    
+                                </optgroup>
+                                
+                                <!-- Otras opciones -->
+                                <optgroup label=" Otras opciones ">
+                                    <option value="Otro">Especificar otro modelo y precio</option>
+                                    <option value="0 Bs">Vacío - 0 Bs</option>
+                                </optgroup>
+                            </select>
+                            <input type="text" id="customMotherboard" name="customMotherboard" placeholder="Especifica el modelo y precio" style="display: none;">
+                        </div>
+                </div>
+                <div>
+                    <label for="ram">Memoria RAM DDR4/DDR5</label>
+                    <div class="product-option">
+                        <img src="Especial body combat (7).png" alt="Memoria RAM">
+                        <select id="ram" name="ram">
+                            <!-- Memoria RAM DDR4 -->
+                            <optgroup label="Memoria RAM DDR4">
+                            <option value="DDR4 8GB 3200MHz ADATA/IPACER/Mushkin - 270 Bs">DDR4 8GB 3200MHz ADATA/IPACER/Mushkin </option>
+                            <option value="DDR4 8GB 2660MHz Ballistix - 250 Bs">DDR4 8GB 2660MHz Ballistix </option>
+                            <option value="DDR4 16GB 3200MHz Crucial - 490 Bs">DDR4 16GB 3200MHz Crucial </option>
+                            <option value="DDR4 16GB 3200MHz Kingston - 550 Bs">DDR4 16GB 3200MHz Kingston </option>
+                            <option value="DDR4 16GB 3200MHz XPG Kanox RGB - 600 Bs">DDR4 16GB 3200MHz XPG Kanox RGB </option>
+                            <option value="DDR4 32GB 3200MHz Corsair Vengeance - 900 Bs">DDR4 32GB 3200MHz Corsair Vengeance </option>
+                        </optgroup>
+                            
+                            <!-- Memoria RAM DDR5 -->
+                            <optgroup label="Memoria RAM DDR5">
+                            <option value="DDR5 8GB 4800MHz Teamgroup - 480 Bs">DDR5 8GB 4800MHz Teamgroup  </option>
+                            <option value="DDR5 8GB 5200MHz Kingston - 500 Bs">DDR5 8GB 5200MHz Kingston </option>
+                            <option value="DDR5 16GB 5600MHz XPG - 900 Bs">DDR5 16GB 5600MHz XPG </option>
+                            <option value="DDR5 32GB 6000MHz XPG - 1500 Bs">DDR5 32GB 6000MHz XPG </option>
+                        </optgroup>
+                            
+                            <!-- Otras opciones -->
+                            <optgroup label=" Otras opciones ">
+                                <option value="Otro">Especificar otro modelo y precio</option>
+                                <option value="0 Bs">Vacío - 0 Bs</option>
+                            </optgroup>
+                        </select>
+                        <input type="text" id="customRam" name="customRam" placeholder="Especifica el modelo y precio" style="display: none;">
+                    </div>
+                </div>
+                
+            
+                    <div>
+                        <label for="storage">Disco Duro SSD/M.2</label>
+                        <div class="product-option">
+                            <img src="ssdd.webp" alt="Disco Duro">
+                            <select id="storage" name="storage">
+                                <!-- Almacenamiento M.2 -->
+                                <optgroup label="Almacenamiento M.2 ">
+
+                                <option value="M.2 256GB - 350 Bs">M.2 256GB </option>
+                                <option value="M.2 500GB - 550 Bs">M.2 500GB </option>
+                                <option value="M.2 1TB - 850 Bs">M.2 1TB </option>
+                            </optgroup>
+                                <!-- Almacenamiento SSD -->
+                                <optgroup label="Almacenamiento SSD">
+                                <option value="SSD 256GB - 380 Bs">SSD 256GB </option>
+                                <option value="SSD 500GB - 430 Bs">SSD 500GB  </option>
+                                <option value="SSD 1TB - 680 Bs">SSD 1TB  </option>
+                            </optgroup>
+                                <!-- Otras opciones -->
+                                <optgroup label=" Otras opciones ">
+                                    <option value="Otro">Especificar otro modelo y precio</option>
+                                    <option value="0 Bs">Vacío - 0 Bs</option>
+                                </optgroup>
+                            </select>
+                            <input type="text" id="customStorage" name="customStorage" placeholder="Especifica el modelo y precio" style="display: none;">
+                        </div>
+                    </div>
+
+                <div>
+                    <label for="gpu">Tarjeta Gráfica GTX/RTX</label>
+                    <div class="product-option">
+                        <img src="videovideo.jpg" alt="Tarjeta Gráfica">
+                        <select id="gpu" name="gpu">
+                            <!-- Tarjetas Gráficas GTX -->
+                            <optgroup label="Tarjetas Gráficas GTX">
+                            <option value="GTX 1650 Ti 4GB Biostar - 1600 Bs">GTX 1650 Ti 4GB Biostar - 1600 Bs</option>
+                            <option value="GTX 1650 4GB MSI - 1750 Bs">GTX 1650 4GB MSI - 1750 Bs</option>
+                        </optgroup>
+                            
+                            <!-- Tarjetas Gráficas RTX -->
+                            <optgroup label="Tarjetas Gráficas RTX">
+                            <option value="RTX 3050 6GB MSI - 3050 Bs">RTX 3050 6GB MSI </option>
+                            <option value="RTX 3060 12GB - 3750 Bs">RTX 3060 12GB </option>
+                            <option value="RTX 3060 Ti 8GB - 4250 Bs">RTX 3060 Ti 8GB </option>
+                            <option value="RTX 4060 8GB - 4750 Bs">RTX 4060 8GB </option>
+                            <option value="RTX 4070 Ti 12GB MSI - 7200 Bs">RTX 4070 Ti 12GB MSI </option>
+                            <option value="RX 6700 12GB - 4950 Bs">RX 6700 12GB </option>
+                            <option value="RTX 4060 16GB - 7550 Bs">RTX 4060 16GB </option>
+                            <option value="RTX 4070 12GB - 8350 Bs">RTX 4070 12GB </option>
+                            <option value="RTX 4070 12GB SuperOC - 7550 Bs">RTX 4070 12GB SuperOC </option>
+                            <option value="ESPECIFICACIÓN RTX 4070 Ti - 10350 Bs">ESPECIFICACIÓN RTX 4070 Ti </option>
+                            <option value="RTX 4060 GB Asus - 13350 Bs">RTX 4060 GB Asus </option>
+                            <option value="RTX 3050 8GB - 3320 Bs">RTX 3050 8GB  Bs</option>
+                            <option value="NVIDIA GeForce RTX 2050 4GB - 2600 Bs">NVIDIA GeForce RTX 2050 4GB </option>
+                        </optgroup>
+                            
+                            <!-- Otras opciones -->
+                            <optgroup label=" Otras opciones ">
+                            <option value="Otro">Especificar otro modelo y precio</option>
+                            <option value="0 Bs">Vacío - 0 Bs</option>
+                        </optgroup>
+                        </select>
+                        <input type="text" id="customGpu" name="customGpu" placeholder="Especifica el modelo y precio" style="display: none;">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="case">Case Combo/Suelto</label>
+                    <div class="product-option">
+                        <img src="Especial body combat (5).png" alt="Case">
+                        <select id="case" name="case">
+                            <!-- Nuevos productos -->
+                            <option value="Combo RakkRokk - 480 Bs">Combo RakkRokk </option>
+                            <option value="Combo CoreDark - 600 Bs">Combo CoreDark </option>
+                            <option value="Combo OleDark - 650 Bs">Combo OleDark </option>
+                            <option value="Combo Deluxe Gamer - 850 Bs">Combo Deluxe Gamer </option>
+                            <option value="Combo Dark Gamer - 990 Bs">Combo Dark Gamer </option>
+                            <option value="Gabinete Pacific Aztec Elite - 650 Bs">Gabinete Pacific Aztec Elite </option>
+                            <option value="Gabinete Aurora RGB White - 650 Bs">Gabinete Aurora RGB White </option>
+                            <option value="Gabinete Case Drag Elite - 690 Bs">Gabinete Case Drag Elite </option>
+                            <option value="Gabinete LianLi D3 - 950 Bs">Gabinete LianLi D3 </option>
+                            <option value="Antec AX20 Elite - 580 Bs">Antec AX20 Elite </option>
+                            <option value="Aura G6C - 620 Bs">Aura G6C </option>
+                
+                            <!-- Otras opciones -->
+                            <optgroup label=" Otras opciones ">
+                                <option value="Otro">Especificar otro modelo y precio</option>
+                                <option value="0 Bs">Vacío - 0 Bs</option>
+                            </optgroup>
+                        </select>
+                        <input type="text" id="customCase" name="customCase" placeholder="Especifica el modelo y precio" style="display: none;">
+                    </div>
+                </div>
+                
+           
+
+            <!-- Nuevos campos para Monitor, Refrigeración, Impresora, etc. -->
+                <div>
+                    <label for="monitor">Monitor Curvo/Plano</label>
+                    <div class="product-option">
+                        <img src="monitores.png" alt="Monitor" style="width: 80px; height: 80px;">
+
+                        <select id="monitor" name="monitor">
+                            <option value="Monitor Curvo 144Hz - 1800 Bs">Monitor Curvo 144Hz </option>
+                            <option value="Monitor Plano 1080p - 1200 Bs">Monitor Plano 1080p </option>
+                             <!-- Otras opciones -->
+                             <optgroup label=" Otras opciones ">
+                                <option value="Otro">Especificar otro modelo y precio</option>
+                                <option value="0 Bs">Vacío - 0 Bs</option>
+                            </optgroup>
+                        </select>
+                        <input type="text" id="customMonitor" name="customMonitor" placeholder="Especifica el modelo y precio" style="display: none;">
+                    </div>
+                </div>
+                <div>
+                    <label for="cooling">Refrigeración Líquida</label>
+                    <div class="product-option">
+                        <img src="Especial body combat (8).png" alt="Refrigeración">
+                        <select id="cooling" name="cooling">
+                            <option value="Refrigeración 120mm - 400 Bs">Refrigeración 120mm </option>
+                            <option value="Refrigeración 240mm - 700 Bs">Refrigeración 240mm </option>
+                             <!-- Otras opciones -->
+                             <optgroup label=" Otras opciones ">
+                                <option value="Otro">Especificar otro modelo y precio</option>
+                                <option value="0 Bs">Vacío - 0 Bs</option>
+                            </optgroup>
+                        </select>
+                        <input type="text" id="customCooling" name="customCooling" placeholder="Especifica el modelo y precio" style="display: none;">
+                    </div>
+                </div>
+                <div>
+                    <label for="printer">Impresora</label>
+                    <div class="product-option">
+                        <img src="impresora-epson.jpg" alt="Impresora">
+                        <select id="printer" name="printer">
+                            <option value="Impresora Láser - 800 Bs">Impresora Láser </option>
+                            <option value="Impresora Inyección - 500 Bs">Impresora Inyección </option>
+                            <!-- Otras opciones -->
+                            <optgroup label=" Otras opciones ">
+                                <option value="Otro">Especificar otro modelo y precio</option>
+                                <option value="0 Bs">Vacío - 0 Bs</option>
+                            </optgroup>
+                        </select>
+                        <input type="text" id="customPrinter" name="customPrinter" placeholder="Especifica el modelo y precio" style="display: none;">
+                    </div>
+                </div>
+                <div>
+                    <label for="stabilizer">Estabilizador de Energía</label>
+                    <div class="product-option">
+                        <img src="energia.png" alt="Estabilizador">
+                        <select id="stabilizer" name="stabilizer">
+                            <option value="Estabilizador 1000VA - 250 Bs">Estabilizador 1000VA </option>
+                            <option value="Estabilizador 1500VA - 350 Bs">Estabilizador 1500VA </option>
+                             <!-- Otras opciones -->
+                             <optgroup label=" Otras opciones ">
+                                <option value="Otro">Especificar otro modelo y precio</option>
+                                <option value="0 Bs">Vacío - 0 Bs</option>
+                            </optgroup>
+                        </select>
+                        <input type="text" id="customStabilizer" name="customStabilizer" placeholder="Especifica el modelo y precio" style="display: none;">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="psu">Fuente Real/Genérica</label>
+                    <div class="product-option">
+                        <img src="fuente-poder.jpg" alt="Fuente de Poder">
+                        <select id="psu" name="psu">
+                            <!-- Nuevos productos -->
+                            <option value="750W 80+ Oro Seasonic - 520 Bs">750W 80+ Oro Seasonic </option>
+                            <option value="550W 80+ Bronce Azza - 370 Bs">550W 80+ Bronce Azza </option>
+                            <option value="650W 80+ Bronce Azza - 450 Bs">650W 80+ Bronce Azza </option>
+                            <option value="750W 80+ Bronce Azza - 550 Bs">750W 80+ Bronce Azza </option>
+                            <option value="650W 80+ Oro Corsair - 950 Bs">650W 80+ Oro Corsair </option>
+                            <option value="700W 80+ White - 620 Bs">700W 80+ White </option>
+                            <option value="750W 80+ Bronze - 950 Bs">750W 80+ Bronze </option>
+                
+                    
+                            <!-- Otras opciones -->
+                            <optgroup label=" Otras opciones ">
+                                <option value="Otro">Especificar otro modelo y precio</option>
+                                <option value="0 Bs">Vacío - 0 Bs</option>
+                            </optgroup>
+                        </select>
+                        <input type="text" id="customPsu" name="customPsu" placeholder="Especifica el modelo y precio" style="display: none;">
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="total-price" id="totalPrice">Total: 0 Bs</div>
+
+            <!-- Botón de borrado -->
+            <button type="button" class="reset-button" onclick="resetForm()">Borrar Todo</button>
+            <button type="button" onclick="showSummary()">Calcular Total y Mostrar Resumen</button>
+        </form>
+    </div>
+
+   <!-- Modal para el resumen -->
+<div id="summaryModal" class="summary-modal">
+    <div class="modal-content">
+        <h2>Resumen de la Cotización</h2>
+        <p id="summaryText"></p>
+        <button onclick="confirmAndSend()">Confirmar y Enviar</button>
+        <button class="cancel-button" onclick="closeSummary()">Cancelar</button>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('pcForm');
+    const totalPriceElement = document.getElementById('totalPrice');
+    const summaryModal = document.getElementById('summaryModal');
+    const summaryText = document.getElementById('summaryText');
+
+    // Lógica para mostrar el campo personalizado si se selecciona "Otro"
+    const components = [
+        {selectId: 'processor', inputId: 'customProcessor'},
+        {selectId: 'motherboard', inputId: 'customMotherboard'},
+        {selectId: 'ram', inputId: 'customRam'},
+        {selectId: 'storage', inputId: 'customStorage'},
+        {selectId: 'gpu', inputId: 'customGpu'},
+        {selectId: 'case', inputId: 'customCase'},
+        {selectId: 'monitor', inputId: 'customMonitor'},
+        {selectId: 'cooling', inputId: 'customCooling'},
+        {selectId: 'printer', inputId: 'customPrinter'},
+        {selectId: 'stabilizer', inputId: 'customStabilizer'},
+        {selectId: 'psu', inputId: 'customPsu'}
+    ];
+
+    components.forEach(component => {
+        const selectElement = document.getElementById(component.selectId);
+        const inputElement = document.getElementById(component.inputId);
+        selectElement.addEventListener('change', function() {
+            if (this.value === 'Otro') {
+                inputElement.style.display = 'block';
+            } else {
+                inputElement.style.display = 'none';
+            }
+        });
+    });
+
+    form.addEventListener('input', updateTotal);
+
+    function updateTotal() {
+        let total = 0;
+
+        // Itera sobre los componentes y calcula el total correctamente
+        components.forEach(component => {
+            const selectElement = document.getElementById(component.selectId);
+            const inputElement = document.getElementById(component.inputId);
+            
+            if (selectElement.value === "Otro") {
+                // Si el campo es personalizado, asegúrate de manejar bien la cadena y convertirla a número
+                const customPrice = parseFloat(inputElement.value.split('-')[1]?.replace(' Bs', '').trim()) || 0;
+                total += customPrice;
+            } else {
+                // Si no es "Otro", asegúrate de que la opción seleccionada no sea "0 Bs"
+                if (selectElement.value !== "0 Bs") {
+                    total += parsePrice(selectElement.value);
+                }
+            }
+        });
+
+        // Muestra el total en el elemento correspondiente
+        totalPriceElement.textContent = `Total: ${total} Bs`;
+    }
+
+    function parsePrice(value) {
+        // Se asegura de que el valor esté en el formato correcto
+        const price = value.split('-')[1]?.replace(' Bs', '').trim();
+        return price ? parseFloat(price) : 0;
+    }
+
+    function showSummary() {
+        const processor = getComponentSummary('processor', 'customProcessor');
+        const motherboard = getComponentSummary('motherboard', 'customMotherboard');
+        const ram = getComponentSummary('ram', 'customRam');
+        const storage = getComponentSummary('storage', 'customStorage');
+        const gpu = getComponentSummary('gpu', 'customGpu');
+        const pcCase = getComponentSummary('case', 'customCase');
+        const monitor = getComponentSummary('monitor', 'customMonitor');
+        const cooling = getComponentSummary('cooling', 'customCooling');
+        const printer = getComponentSummary('printer', 'customPrinter');
+        const stabilizer = getComponentSummary('stabilizer', 'customStabilizer');
+        const psu = getComponentSummary('psu', 'customPsu');
+        const total = totalPriceElement.textContent;
+
+        summaryText.innerHTML = `
+            <strong>Procesador:</strong> ${processor}<br>
+            <strong>Tarjeta Madre:</strong> ${motherboard}<br>
+            <strong>Memoria RAM:</strong> ${ram}<br>
+            <strong>Almacenamiento:</strong> ${storage}<br>
+            <strong>Tarjeta Gráfica:</strong> ${gpu}<br>
+            <strong>Case:</strong> ${pcCase}<br>
+            <strong>Monitor:</strong> ${monitor}<br>
+            <strong>Refrigeración:</strong> ${cooling}<br>
+            <strong>Impresora:</strong> ${printer}<br>
+            <strong>Estabilizador:</strong> ${stabilizer}<br>
+            <strong>Fuente:</strong> ${psu}<br><br>
+            <strong>Total:</strong> ${total}
+        `;
+
+        summaryModal.style.display = "flex";
+    }
+
+    function getComponentSummary(selectId, customId) {
+        const selectElement = document.getElementById(selectId);
+        const inputElement = document.getElementById(customId);
+
+        if (selectElement.value === "Otro") {
+            // Devuelve solo el nombre del componente sin el precio
+            return inputElement.value.split('-')[0].trim() || "No especificado";
+        } else {
+            // Devuelve solo el nombre del componente sin el precio
+            return selectElement.value.split('-')[0].trim() || "Vacío";
+        }
+    }
+
+    function confirmAndSend() {
+        const message = `Hola! Estoy interesado en armar una PC con los siguientes componentes:\n\n` +
+            `🖥️ *Componentes Seleccionados:* \n\n` +
+            `🔧 *Procesador:* ${getComponentSummary('processor', 'customProcessor')}\n` +
+            `🛠️ *Tarjeta Madre:* ${getComponentSummary('motherboard', 'customMotherboard')}\n` +
+            `💻 *Memoria RAM:* ${getComponentSummary('ram', 'customRam')}\n` +
+            `💾 *Almacenamiento:* ${getComponentSummary('storage', 'customStorage')}\n` +
+            `🎮 *Tarjeta Gráfica:* ${getComponentSummary('gpu', 'customGpu')}\n` +
+            `📦 *Case:* ${getComponentSummary('case', 'customCase')}\n` +
+            `🖥️ *Monitor:* ${getComponentSummary('monitor', 'customMonitor')}\n` +
+            `❄️ *Refrigeración:* ${getComponentSummary('cooling', 'customCooling')}\n` +
+            `🖨️ *Impresora:* ${getComponentSummary('printer', 'customPrinter')}\n` +
+            `⚡ *Estabilizador:* ${getComponentSummary('stabilizer', 'customStabilizer')}\n` +
+            `🔌 *Fuente de Poder:* ${getComponentSummary('psu', 'customPsu')}\n\n` +
+            `💰 *Total:* ${totalPriceElement.textContent}\n\n` +
+            `¿Me podrían enviar más información?`;
+
+        const whatsappURL = `https://wa.me/59162431158?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+        summaryModal.style.display = "none";
+    }
+
+    function closeSummary() {
+        summaryModal.style.display = "none";
+    }
+
+    function resetForm() {
+        // Resetea el formulario y selecciona la opción "Vacío - 0 Bs" para todos los componentes
+        components.forEach(component => {
+            const selectElement = document.getElementById(component.selectId);
+            selectElement.value = "0 Bs";
+            document.getElementById(component.inputId).style.display = "none";
+        });
+        updateTotal();
+    }
+</script>
+
+</body>
+
+</html>
+
+
+
+
+

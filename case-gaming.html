@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB Informatic - Cases Gaming</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1976d2;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .product-item {
+            background-color: #ffffff;
+            border: 2px solid #1976d2;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 15px;
+            position: relative;
+        }
+
+        .product-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-details {
+            padding: 10px;
+            min-height: 150px;
+            border-top: 1px solid #1976d2;
+            margin-top: 10px;
+        }
+
+        .product-details h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #0d47a1;
+            font-weight: bold;
+        }
+
+        .product-details p {
+            margin: 5px 0;
+            font-size: 15px;
+            color: #5e5e5e;
+        }
+
+        .price {
+            font-size: 22px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .buy-button {
+            background: linear-gradient(45deg, #ff5722, #ff7043);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(45deg, #ff7043, #ff5722);
+            transform: scale(1.05);
+        }
+
+        .product-item a {
+            text-decoration: none;
+        }
+
+        .back-button {
+            display: block;
+            margin: 30px auto;
+            padding: 14px 28px;
+            background-color: #1976d2;
+            color: white;
+            text-align: center;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            max-width: 300px;
+        }
+
+        .back-button:hover {
+            background-color: #0d47a1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="container">
+            <h1>Catálogo de Cases Gaming</h1>
+            <!-- Botón para volver a la página principal -->
+            <a href="index.html" class="back-button">Volver a la Página Principal</a>
+        
+            <div class="product-grid">
+                <!-- Case 1 -->
+                <div class="product-item">
+                    <img src="combo_oledark.png" alt="Combo OleDark">
+                    <div class="product-details">
+                        <h3>Combo OleDark</h3>
+                        <p>Iluminación RGB, Vidrio Templado</p>
+                        <p>ATX, Flujo de Aire Mejorado</p>
+                        <div class="price">700 Bs</div>
+                        <a href="cart.html">
+                            <button class="buy-button" onclick="addToCart('Combo OleDark', 700)">Comprar Ahora</button>
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- Case 2 -->
+                <div class="product-item">
+                    <img src="combo_deluxe_gamer.webp" alt="Combo Deluxe Gamer">
+                    <div class="product-details">
+                        <h3>Combo Deluxe Gamer</h3>
+                        <p>Iluminación RGB, Vidrio Templado</p>
+                        <p>ATX, Flujo de Aire Optimizado</p>
+                        <div class="price">900 Bs</div>
+                        <a href="cart.html">
+                            <button class="buy-button" onclick="addToCart('Combo Deluxe Gamer', 900)">Comprar Ahora</button>
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- Case 3 -->
+                <div class="product-item">
+                    <img src="combo_dark_gamer.jpg" alt="Combo Dark Gamer">
+                    <div class="product-details">
+                        <h3>Combo Dark Gamer</h3>
+                        <p>Iluminación RGB, Vidrio Templado</p>
+                        <p>ATX, Gestión de Cables Mejorada</p>
+                        <div class="price">1040 Bs</div>
+                        <a href="cart.html">
+                            <button class="buy-button" onclick="addToCart('Combo Dark Gamer', 1040)">Comprar Ahora</button>
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- Case 4 -->
+                <div class="product-item">
+                    <img src="gabinete_pacific_aztec.webp" alt="Gabinete Pacific Aztec Elite">
+                    <div class="product-details">
+                        <h3>Gabinete Pacific Aztec Elite</h3>
+                        <p>Vidrio Templado, Iluminación RGB</p>
+                        <p>ATX, Flujo de Aire Mejorado</p>
+                        <div class="price">700 Bs</div>
+                        <a href="cart.html">
+                            <button class="buy-button" onclick="addToCart('Gabinete Pacific Aztec Elite', 700)">Comprar Ahora</button>
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- Case 5 -->
+                <div class="product-item">
+                    <img src="gabinete_aurora_rgb.png" alt="Gabinete Aurora RGB White">
+                    <div class="product-details">
+                        <h3>Gabinete Aurora RGB White</h3>
+                        <p>Vidrio Templado, Iluminación ARGB</p>
+                        <p>ATX, Diseño Compacto</p>
+                        <div class="price">700 Bs</div>
+                        <a href="cart.html">
+                            <button class="buy-button" onclick="addToCart('Gabinete Aurora RGB White', 700)">Comprar Ahora</button>
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- Case 6 -->
+                <div class="product-item">
+                    <img src="gabinete_drag_elite.webp" alt="Gabinete Case Drag Elite">
+                    <div class="product-details">
+                        <h3>Gabinete Case Drag Elite</h3>
+                        <p>Vidrio Templado, Iluminación ARGB</p>
+                        <p>ATX, Flujo de Aire Optimizado</p>
+                        <div class="price">740 Bs</div>
+                        <a href="cart.html">
+                            <button class="buy-button" onclick="addToCart('Gabinete Case Drag Elite', 740)">Comprar Ahora</button>
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- Case 7 -->
+                <div class="product-item">
+                    <img src="gabinete_lianli_d3.jpg" alt="Gabinete LianLi D3">
+                    <div class="product-details">
+                        <h3>Gabinete LianLi D3</h3>
+                        <p>Vidrio Templado, Iluminación RGB</p>
+                        <p>ATX, Flujo de Aire Mejorado</p>
+                        <div class="price">1000 Bs</div>
+                        <a href="cart.html">
+                            <button class="buy-button" onclick="addToCart('Gabinete LianLi D3', 1000)">Comprar Ahora</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+

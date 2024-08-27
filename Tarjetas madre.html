@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB Informatic - Placas Madre</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1976d2;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajuste de tamaño mínimo */
+            gap: 20px;
+        }
+
+        .product-item {
+            background-color: #ffffff;
+            border: 2px solid #1976d2;
+            border-radius: 12px; /* Borde redondeado más elegante */
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más definida */
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 15px;
+            position: relative;
+        }
+
+        .product-item:hover {
+            transform: translateY(-8px); /* Elevación al pasar el cursor */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 8px; /* Suaviza los bordes de la imagen */
+            margin-bottom: 15px;
+        }
+
+        .product-details {
+            padding: 10px;
+            min-height: 150px;
+            border-top: 1px solid #1976d2;
+            margin-top: 10px;
+        }
+
+        .product-details h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #0d47a1;
+            font-weight: bold;
+        }
+
+        .product-details p {
+            margin: 5px 0;
+            font-size: 15px;
+            color: #5e5e5e;
+        }
+
+        .price {
+            font-size: 22px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .buy-button {
+            background: linear-gradient(45deg, #ff5722, #ff7043);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(45deg, #ff7043, #ff5722);
+            transform: scale(1.05);
+        }
+
+        .product-item a {
+            text-decoration: none;
+        }
+
+        /* Botón para regresar a la página principal */
+        .back-button {
+            display: block;
+            margin: 30px auto;
+            padding: 14px 28px;
+            background-color: #1976d2;
+            color: white;
+            text-align: center;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            max-width: 300px;
+        }
+
+        .back-button:hover {
+            background-color: #0d47a1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Catálogo de Placas Madre</h1>
+        <!-- Botón para volver a la página principal -->
+        <a href="index.html" class="back-button">Volver a la Página Principal</a>
+    
+        <!-- Sección de Placas Intel -->
+
+        <h2 style="color: #e0e0e0; display: inline-block; margin-right: 20px;">Placas Madre Intel</h2>
+
+        <div class="product-grid">
+            <!-- Placa Madre 1 -->
+            <div class="product-item">
+                <img src="h610.webp" alt="Placa Madre H610 M Asus">
+                <div class="product-details">
+                    <h3>Placa Madre H610 M Asus</h3>
+                    <p>Soporte Intel 12ma Gen, DDR4 64GB</p>
+                    <p>PCIe 4.0, USB 3.2</p>
+                    <div class="price">1400 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Placa Madre H610 M Asus', 1400)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Placa Madre 2 -->
+            <div class="product-item">
+                <img src="b760.jpg" alt="Placa Madre B760-A ARK Asus Wi-Fi">
+                <div class="product-details">
+                    <h3>Placa Madre B760-A ARK Asus Wi-Fi</h3>
+                    <p>Soporte Intel 12ma Gen, DDR5 128GB</p>
+                    <p>PCIe 4.0, Wi-Fi 6, USB-C</p>
+                    <div class="price">2580 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Placa Madre B760-A ARK Asus Wi-Fi', 2580)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Placa Madre 3 -->
+            <div class="product-item">
+                <img src="b760_pro.png" alt="Placa Madre B760 PRO ASRock DS Wi-Fi">
+                <div class="product-details">
+                    <h3>Placa Madre B760 PRO ASRock DS Wi-Fi</h3>
+                    <p>Soporte Intel 12ma Gen, DDR5 128GB</p>
+                    <p>PCIe 4.0, Wi-Fi 6, USB-C</p>
+                    <div class="price">2340 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Placa Madre B760 PRO ASRock DS Wi-Fi', 2340)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Placa Madre 4 -->
+            <div class="product-item">
+                <img src="z790_p_prime.png" alt="Placa Madre Z790-P Prime Asus DS Wi-Fi">
+                <div class="product-details">
+                    <h3>Placa Madre Z790-P Prime Asus DS Wi-Fi</h3>
+                    <p>Soporte Intel 12ma Gen, DDR5 128GB</p>
+                    <p>PCIe 5.0, USB-C, Wi-Fi 6</p>
+                    <div class="price">3680 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Placa Madre Z790-P Prime Asus DS Wi-Fi', 3680)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Placa Madre 5 -->
+            <div class="product-item">
+                <img src="z790_g_strix.png" alt="Placa Madre Z790-G ROG Strix Asus DS Wi-Fi">
+                <div class="product-details">
+                    <h3>Placa Madre Z790-G ROG Strix Asus DS Wi-Fi</h3>
+                    <p>Soporte Intel 12ma Gen, DDR5 128GB</p>
+                    <p>PCIe 5.0, USB-C, Wi-Fi 6E</p>
+                    <div class="price">5280 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Placa Madre Z790-G ROG Strix Asus DS Wi-Fi', 5280)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Sección de Placas AMD -->
+        <h2 style="color: #e0e0e0; display: inline-block; margin-right: 20px;">Placas Madre AMD</h2>S
+        <div class="product-grid">
+            <!-- Placa Madre 6 -->
+            <div class="product-item">
+                <img src="b450_asrock.jpg" alt="Placa Madre B450 ASRock">
+                <div class="product-details">
+                    <h3>Placa Madre B450 ASRock</h3>
+                    <p>Soporte AMD Ryzen, DDR4 64GB</p>
+                    <p>PCIe 3.0, M.2</p>
+                    <div class="price">1110 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Placa Madre B450 ASRock', 1110)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Placa Madre 7 -->
+            <div class="product-item">
+                <img src="b450_pro.jpg" alt="Placa Madre B450 Pro 4S2">
+                <div class="product-details">
+                    <h3>Placa Madre B450 Pro 4S2</h3>
+                    <p>Soporte AMD Ryzen, DDR4 64GB</p>
+                    <p>PCIe 3.0, M.2</p>
+                    <div class="price">1130 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Placa Madre B450 Pro 4S2', 1130)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Placa Madre 8 -->
+            <div class="product-item">
+                <img src="a520m_k_asus.jpg" alt="Placa Madre A520M-K Asus">
+                <div class="product-details">
+                    <h3>Placa Madre A520M-K Asus</h3>
+                    <p>Soporte AMD Ryzen, DDR4 64GB</p>
+                    <p>PCIe 3.0, M.2</p>
+                    <div class="price">1180 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Placa Madre A520M-K Asus', 1180)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Placa Madre 9 -->
+            <div class="product-item">
+                <img src="a520_h_asus.jpg" alt="Placa Madre A520-H Asus">
+                <div class="product-details">
+                    <h3>Placa Madre A520-H Asus</h3>
+                    <p>Soporte AMD Ryzen, DDR4 64GB</p>
+                    <p>PCIe 3.0, M.2</p>
+                    <div class="price">1260 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Placa Madre A520-H Asus', 1260)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Placa Madre 10 -->
+            <div class="product-item">
+                <img src="b550_asrock.png" alt="Placa Madre B550 ASRock">
+                <div class="product-details">
+                    <h3>Placa Madre B550 ASRock</h3>
+                    <p>Soporte AMD Ryzen, DDR4 128GB</p>
+                    <p>PCIe 4.0, M.2</p>
+                    <div class="price">1130 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Placa Madre B550 ASRock', 1130)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+           
+
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+

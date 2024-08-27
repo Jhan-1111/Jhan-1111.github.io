@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - SB Informatic</title>
+    <style>
+        /* Estilos generales */
+        body,
+        html {
+            font-family: 'Arial', sans-serif;
+            background-color: #2b2b2b;
+            color: #eaeaea;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Imagen superior */
+        .top-banner {
+            background: url('imagen_superior.jpg') no-repeat center center/cover;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.8em;
+            color: #00bcd4;
+            border-bottom: 2px solid #00bcd4;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        #cartItems {
+            margin: 20px 0;
+            border-bottom: 1px solid #444;
+            padding-bottom: 20px;
+        }
+
+        #cartItems .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #666;
+        }
+
+        #cartItems .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        #cartItems .cart-item span {
+            flex: 1;
+            text-align: left;
+        }
+
+        .total-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #totalPrice {
+            font-size: 1.5em;
+            color: #eaeaea;
+            font-weight: bold;
+        }
+
+        .finalize-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-right: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .finalize-button:hover {
+            background-color: #d32f2f;
+        }
+
+        .payment-method {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .payment-method h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #00bcd4;
+        }
+
+        .payment-method img.qr-code {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .payment-method ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .payment-method ul li {
+            font-size: 1em;
+            margin-bottom: 5px;
+            color: #eaeaea;
+        }
+
+        .delivery-info {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .delivery-info p {
+            font-size: 1.2em;
+            color: #eaeaea;
+        }
+
+        .delivery-info img.flag {
+            width: 40px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .contact-info img.qr-code {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info p {
+            font-size: 1.2em;
+            color: #eaeaea;
+        }
+
+        button {
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0097a7;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo del carrusel y combos */
+        .inicio {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .inicio h2 {
+            font-size: 1.6em;
+            color: #ffeb3b;
+            margin-bottom: 10px;
+        }
+
+        .inicio p {
+            font-size: 1em;
+            color: #eaeaea;
+            margin-bottom: 20px;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width:50%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 10px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .combo-section {
+            text-align: center;
+            background-color: #444;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .combo-section h3 {
+            color: #00bcd4;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .combo-selector {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .combo-selector select {
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px;
+            background-color: #555;
+            color: #eaeaea;
+        }
+
+        .combo-selector .buy-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #00bcd4;
+            border: none;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .combo-selector .buy-button:hover {
+            background-color: #0097a7;
+        }
+
+        /* Estilo para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #1c1c1c;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            color: #eaeaea;
+            border-radius: 8px;
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            color: #00bcd4;
+        }
+
+        .modal-content p {
+            font-size: 1.2em;
+        }
+
+        .close-btn {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content img.qr-image {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+            height: 150px;
+        }
+
+        .modal-button {
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .modal-button:hover {
+            background-color: #0097a7;
+        }
+
+        /* Estilos para el botón de "Listo" en el modal */
+        .ready-button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .ready-button:hover {
+            background-color: #388e3c;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Tu Carrito de Compras</h1>
+        <nav>
+            <a href="index.html">⬅️ Volver a Productos</a>
+        </nav>
+    </header>
+
+    <!-- Imagen superior -->
+    <div class="top-banner">
+        <p style="color: #ffeb3b; font-weight: bold; text-shadow: 0px 0px 10px #fff700; font-size: 3rem;">¡Ofertas exclusivas en SB Informatic!</p>
+    </div>
+
+    <div class="container">
+        <h2>Productos en tu Carrito</h2>
+        <div id="cartItems"></div>
+
+        <div class="total-section">
+            <button class="finalize-button" onclick="finalizePurchase()">Finalizar Compra</button>
+            <p id="totalPrice" class="total-price">Total a pagar: Bs. 0.00</p>
+        </div>
+
+        <!-- Botón para abrir el modal -->
+        <button class="modal-button" onclick="openModal()">Comprar</button>
+
+        <!-- Modal -->
+        <div id="purchaseModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3>Detalles de tu Compra</h3>
+                <p id="purchaseDetails">Total a pagar: Bs. <span id="totalAmount">0.00</span></p>
+                <div id="productSummary"></div>
+                <p>Verifica los productos y presiona "Listo" para coordinar el pago en WhatsApp.</p>
+                <!-- Botón de "Listo" -->
+                <button class="ready-button" onclick="goToWhatsApp()">Listo</button>
+            </div>
+        </div>
+
+
+
+        <!-- Sección de Combos -->
+        <section id="combo-list" class="combo-section">
+            <h3>Selecciona tu Combo:</h3>
+            <div class="combo-selector">
+                <select id="combo-select">
+                    <option value="Combo 1 - Ryzen 5 5600 GT - Bs. 5320" data-price="5320">Combo 1: Ryzen 5 5600 GT - Bs. 5320</option>
+                    <option value="Combo 2 - Ryzen 5 - Bs. 4220" data-price="4220">Combo 2: Ryzen 5 - Bs. 4220</option>
+                    <option value="Combo 3 - Ryzen 7 - Bs. 4780" data-price="4780">Combo 3: Ryzen 7 - Bs. 4780</option>
+                    <option value="Combo 4 - Intel Core i7 - Bs. 5980" data-price="5980">Combo 4: Intel Core i7 - Bs. 5980</option>
+                    <option value="Combo 5 - Intel Core i5 - Bs. 4720" data-price="4720">Combo 5: Intel Core i5 - Bs. 4720</option>
+                    <option value="Combo 6 - Laptop HP - Bs. 4300" data-price="4300">Combo 6: Laptop HP - Bs. 4300</option>
+                    <option value="Combo 7 - Laptop Lenovo - Bs. 5300" data-price="5300">Combo 7: Laptop Lenovo - Bs. 5300</option>
+                    <option value="Combo 8 - Laptop Dell - Bs. 5350" data-price="5350">Combo 8: Laptop Dell - Bs. 5350</option>
+                </select>
+                <button class="buy-button" onclick="selectCombo()">Agregar al Carrito</button>
+            </div>
+        </section>
+
+        <!-- Nueva Sección de Descuentos -->
+        <section id="home" class="inicio">
+            <h2>Aprovecha Nuestros Descuentos</h2>
+            <p>Descubre la tecnología con SB Informatic: laptops, gaming PCs, accesorios y más con precios especiales.</p>
+
+            <h2 style="color: yellow;">Promociones del mes</h2>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <img src="23.jpg" alt="Laptop">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="24.jpg" alt="Gaming PC">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="25.jpg" alt="Teclado Gaming">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="26.jpg" alt="Mouse Gaming">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="27.jpg" alt="Mouse Gaming">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="28.jpg" alt="Mouse Gaming">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="29.jpg" alt="Mouse Gaming">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="30.jpg" alt="Mouse Gaming">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="22.jpg" alt="Mouse Gaming">
+                    </div>
+                    <!-- Puedes agregar más imágenes aquí -->
+                </div>
+                <button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="next" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Información de entrega -->
+        <div class="delivery-info">
+            <p>Entregas en la zona central de la ciudad. la paz calatayud uyustus 1050, Bolivia</p>
+            <p><img src="bandera.png" alt="Bandera de Bolivia" class="flag"> Envíos a todo el país</p>
+            <p><img src="bol.png" alt="Teléfono" class="flag"> Contactarse al: +591 62276298, sbinformatic@gmail.com</p>
+        </div>
+
+        <!-- Modo de pago -->
+        <div class="payment-method">
+            <p>Otras formas de pago disponibles:</p>
+            <ul>
+                <li>Transferencia bancaria</li>
+                <li>Pago en efectivo</li>
+                <li>Tarjeta de crédito/débito</li>
+            </ul>
+        </div>
+
+        <!-- Contacto por WhatsApp -->
+        <div class="contact-info">
+            <h3>Contáctanos por WhatsApp</h3>
+            <a href="https://wa.me/59162276298" target="_blank">
+                <img src="whatsapp (1).png" alt="WhatsApp" class="icon" style="width: 34px; height: 34px;">
+
+            </a>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 SB Informatic. Todos los derechos reservados.</p>
+        </footer>
+
+        <script>
+            // Carrusel
+            let currentSlide = 0;
+
+            function moveCarousel(direction) {
+                const carousel = document.querySelector('.carousel');
+                const totalItems = document.querySelectorAll('.carousel-item').length;
+                currentSlide = (currentSlide + direction + totalItems) % totalItems;
+                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+
+            // Cargar el carrito desde localStorage
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            function loadCart() {
+                const cartItemsContainer = document.getElementById("cartItems");
+                const totalPriceContainer = document.getElementById("totalPrice");
+
+                cartItemsContainer.innerHTML = "";
+                let totalPrice = 0;
+
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = "<p class='empty-cart'>Tu carrito está vacío.</p>";
+                    totalPriceContainer.textContent = "Total a pagar: Bs. 0.00";
+                    return;
+                }
+
+                cart.forEach((product) => {
+                    const productElement = document.createElement("div");
+                    productElement.className = "cart-item";
+                    productElement.innerHTML = `
+                        <span>${product.name}</span>
+                        <span>Bs. ${product.price} x ${product.quantity}</span>
+                        <span>Total: Bs. ${(product.price * product.quantity).toFixed(2)}</span>
+                    `;
+                    cartItemsContainer.appendChild(productElement);
+
+                    totalPrice += product.price * product.quantity;
+                });
+
+                totalPriceContainer.textContent = `Total a pagar: Bs. ${totalPrice.toFixed(2)}`;
+            }
+
+            function checkout() {
+                if (cart.length === 0) {
+                    alert("Tu carrito está vacío.");
+                    return;
+                }
+
+                alert(
+                    "Gracias por tu compra! El total es: Bs. " +
+                    cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
+                );
+
+                // Vaciar el carrito y actualizar localStorage
+                cart = [];
+                localStorage.setItem("cart", JSON.stringify(cart));
+                loadCart();
+            }
+
+            // Función para finalizar compra y vaciar el carrito
+            function finalizePurchase() {
+                if (cart.length === 0) {
+                    alert("Tu carrito está vacío.");
+                    return;
+                }
+
+                // Vaciar el carrito y actualizar localStorage
+                cart = [];
+                localStorage.setItem("cart", JSON.stringify(cart));
+                loadCart();
+
+                alert("Compra finalizada. El carrito se ha vaciado.");
+            }
+
+            document.addEventListener("DOMContentLoaded", loadCart);
+
+            // Selección de combo
+            function selectCombo() {
+                const comboSelect = document.getElementById("combo-select");
+                const selectedOption = comboSelect.options[comboSelect.selectedIndex];
+                const comboName = selectedOption.value;
+                const comboPrice = parseFloat(selectedOption.getAttribute("data-price"));
+
+                // Agregar el combo al carrito
+                const existingItem = cart.find(item => item.name === comboName);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        name: comboName,
+                        price: comboPrice,
+                        quantity: 1
+                    });
+                }
+
+                // Guardar el carrito actualizado en localStorage
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+                // Cargar el carrito nuevamente para reflejar el cambio
+                loadCart();
+            }
+
+             // Función para abrir el modal
+             function openModal() {
+                // Mostrar el modal
+                document.getElementById('purchaseModal').style.display = 'block';
+
+                // Calcular el total y mostrarlo en el modal
+                const total = cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
+                document.getElementById('totalAmount').textContent = total;
+
+                // Mostrar el resumen de productos
+                const productSummary = document.getElementById('productSummary');
+                productSummary.innerHTML = ''; // Limpiar cualquier contenido previo
+
+                cart.forEach((product) => {
+                    const productElement = document.createElement("p");
+                    productElement.textContent = `${product.quantity}x ${product.name} - Bs. ${product.price}`;
+                    productSummary.appendChild(productElement);
+                });
+            }
+
+            // Función para cerrar el modal
+            function closeModal() {
+                document.getElementById('purchaseModal').style.display = 'none';
+            }
+
+            // Cerrar el modal si se hace clic fuera de él
+            window.onclick = function(event) {
+                const modal = document.getElementById('purchaseModal');
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+
+            // Función para redirigir a WhatsApp con los detalles de la compra
+            function goToWhatsApp() {
+                const totalAmount = cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
+                let message = `Hola, he realizado una compra por un total de Bs. ${totalAmount}. Aquí está el resumen de mi pedido:\n`;
+
+                cart.forEach((product) => {
+                    message += `${product.quantity}x ${product.name} - Bs. ${product.price}\n`;
+                });
+
+                const whatsappUrl = `https://wa.me/59162276298?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, "_blank");
+            }
+        </script>
+
+    </div>
+</body>
+
+</html>
+
+
+
+
+

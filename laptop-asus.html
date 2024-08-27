@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB Informatic - Laptops</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1976d2;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .product-item {
+            background-color: #ffffff;
+            border: 2px solid #1976d2;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 15px;
+            position: relative;
+        }
+
+        .product-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-details {
+            padding: 10px;
+            min-height: 150px;
+            border-top: 1px solid #1976d2;
+            margin-top: 10px;
+        }
+
+        .product-details h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #0d47a1;
+            font-weight: bold;
+        }
+
+        .product-details p {
+            margin: 5px 0;
+            font-size: 15px;
+            color: #5e5e5e;
+        }
+
+        .price {
+            font-size: 22px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .buy-button {
+            background: linear-gradient(45deg, #ff5722, #ff7043);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(45deg, #ff7043, #ff5722);
+            transform: scale(1.05);
+        }
+
+        .product-item a {
+            text-decoration: none;
+        }
+
+        .back-button {
+            display: block;
+            margin: 30px auto;
+            padding: 14px 28px;
+            background-color: #1976d2;
+            color: white;
+            text-align: center;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            max-width: 300px;
+        }
+
+        .back-button:hover {
+            background-color: #0d47a1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Catálogo de Laptops</h1>
+        <!-- Botón para volver a la página principal -->
+        <a href="index.html" class="back-button">Volver a la Página Principal</a>
+    
+        <div class="product-grid">
+            <!-- Nueva Laptop 1 -->
+            <div class="product-item">
+                <img src="hp_255_g10.jpg" alt="Laptop HP 255 G10">
+                <div class="product-details">
+                    <h3>HP 255 G10</h3>
+                    <p>AMD Ryzen 3 7300U, 8GB RAM, 256GB SSD</p>
+                    <p>Pantalla 15.6" HD, Teclado Español</p>
+                    <div class="price">4150 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('HP 255 G10', 4150)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Nueva Laptop 2 -->
+            <div class="product-item">
+                <img src="lenovo_v15.jpg" alt="Laptop Lenovo V15">
+                <div class="product-details">
+                    <h3>LENOVO V15</h3>
+                    <p>AMD Ryzen 5 7520U, 8GB RAM, 512GB SSD</p>
+                    <p>Pantalla 15.6" FULL HD, Windows 11 Home</p>
+                    <div class="price">5200 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('LENOVO V15', 5200)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Nueva Laptop 3 -->
+            <div class="product-item">
+                <img src="dell_inspiron_i7.jpg" alt="Laptop DELL Inspiron">
+                <div class="product-details">
+                    <h3>DELL Inspiron</h3>
+                    <p>Core i7 1165G7, 8GB RAM, 512GB SSD</p>
+                    <p>Pantalla 15.6" FULL HD</p>
+                    <div class="price">6000 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('DELL Inspiron', 6000)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Nueva Laptop 4 -->
+            <div class="product-item">
+                <img src="hp_victus.jpg" alt="Laptop HP Victus">
+                <div class="product-details">
+                    <h3>HP Victus</h3>
+                    <p>Core i5 12450H, 8GB RAM, 512GB SSD</p>
+                    <p>Pantalla 15.6" IPS 165Hz, RTX 2050 4GB</p>
+                    <div class="price">7600 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('HP Victus', 7600)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Nueva Laptop 5 -->
+            <div class="product-item">
+                <img src="msi_cyborg.jpg" alt="Laptop MSI Cyborg">
+                <div class="product-details">
+                    <h3>MSI Cyborg</h3>
+                    <p>Core i7 12va Gen, 8GB RAM DDR5, 512GB SSD</p>
+                    <p>Pantalla 15.6" 144Hz IPS FHD, RTX 4060 8GB</p>
+                    <div class="price">11000 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('MSI Cyborg', 11000)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Laptops originales continúan aquí -->
+    
+            <!-- Laptop 1 -->
+            <div class="product-item">
+                <img src="laptop1.jpg" alt="Laptop ASUS VivoBook 15">
+                <div class="product-details">
+                    <h3>ASUS VivoBook 15</h3>
+                    <p>Core i7, 16GB RAM, 512GB SSD</p>
+                    <p>Pantalla 15.6" FHD</p>
+                    <div class="price">6980 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('ASUS VivoBook 15', 5500)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Laptop 2 -->
+            <div class="product-item">
+                <img src="laptop2.webp" alt="Laptop HP Pavilion 14">
+                <div class="product-details">
+                    <h3>HP Pavilion 14</h3>
+                    <p>Core i5, 8GB RAM, 256GB SSD</p>
+                    <p>Pantalla 14" HD</p>
+                    <div class="price">6850Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('HP Pavilion 14', 4200)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Laptop 3 -->
+            <div class="product-item">
+                <img src="laptopp.jpg" alt="Laptop Dell Inspiron 15">
+                <div class="product-details">
+                    <h3>Dell Inspiron 15</h3>
+                    <p>Core i7, 16GB RAM, 1TB HDD</p>
+                    <p>Pantalla 15.6" FHD</p>
+                    <div class="price">5800 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Dell Inspiron 15', 5800)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Laptop 4 -->
+            <div class="product-item">
+                <img src="laptop4.webp" alt="Laptop Lenovo IdeaPad 3">
+                <div class="product-details">
+                    <h3>Lenovo IdeaPad 3</h3>
+                    <p>Core i5, 8GB RAM, 512GB SSD</p>
+                    <p>Pantalla 15.6" FHD</p>
+                    <div class="price">6589 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Lenovo IdeaPad 3', 5400)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Laptop 5 -->
+            <div class="product-item">
+                <img src="laptop5.jpg" alt="Laptop Acer Aspire 5">
+                <div class="product-details">
+                    <h3>Acer Aspire 5</h3>
+                    <p>Core i5, 8GB RAM, 256GB SSD</p>
+                    <p>Pantalla 14" HD</p>
+                    <div class="price">560 $us.</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Acer Aspire 5', 5100)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Laptop 6 -->
+            <div class="product-item">
+                <img src="laptop6.png" alt="Laptop Apple MacBook Air M1">
+                <div class="product-details">
+                    <h3>Apple MacBook Air M1</h3>
+                    <p>Apple M1, 8GB RAM, 256GB SSD</p>
+                    <p>Pantalla 13.3" Retina</p>
+                    <div class="price">1533 $us</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Apple MacBook Air M1', 8500)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Laptop 7 -->
+            <div class="product-item">
+                <img src="laptop7.webp" alt="Laptop MSI GF63 Thin">
+                <div class="product-details">
+                    <h3>MSI GF63 Thin</h3>
+                    <p>Core i5, 16GB RAM, 512GB SSD</p>
+                    <p>Pantalla 15.6" FHD, GTX 1650</p>
+                    <div class="price">689 $us</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('MSI GF63 Thin', 6800)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Laptop 8 -->
+            <div class="product-item">
+                <img src="aptop8.jpg" alt="Laptop ASUS TUF Gaming F15">
+                <div class="product-details">
+                    <h3>ASUS TUF Gaming F15</h3>
+                    <p>Core i7, 16GB RAM, 1TB SSD</p>
+                    <p>Pantalla 15.6" FHD, GTX 1660 Ti</p>
+                    <div class="price">1 592 $us.</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('ASUS TUF Gaming F15', 7800)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Laptop 9 -->
+            <div class="product-item">
+                <img src="laptop9.jpg" alt="Laptop HP Envy x360">
+                <div class="product-details">
+                    <h3>HP Envy x360</h3>
+                    <p>Core i7, 16GB RAM, 512GB SSD</p>
+                    <p>Pantalla 13.3" FHD, Convertible</p>
+                    <div class="price">$ 1,440.</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('HP Envy x360', 7200)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Laptop 10 -->
+            <div class="product-item">
+                <img src="laptop10.jpg" alt="Laptop Dell XPS 13">
+                <div class="product-details">
+                    <h3>Dell XPS 13</h3>
+                    <p>Core i7, 16GB RAM, 612GB SSD</p>
+                    <p>Pantalla 13.4" UHD+</p>
+                    <div class="price">$ 2474</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Dell XPS 13', 8000)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Laptop 11 -->
+            <div class="product-item">
+                <img src="laptop11.jpeg" alt="Laptop HP Envy Laptop 17-cw0097nr">
+                <div class="product-details">
+                    <h3>HP Envy Laptop 17-cw0097nr</h3>
+                    <p>Procesador: Intel® Core™ i7-1355U up to 5.0 GHz</p>
+                    <p>Memoria RAM: 32 GB DDR4-3200 MHz</p>
+                    <p>Disco Duro: 1 TB PCIe® NVMe™ M.2 SSD</p>
+                    <p>Tarjeta de Video: NVIDIA® GeForce RTX™ 3050 Laptop GPU 4 GB GDDR6</p>
+                    <p>Pantalla: 17.3" 4K UHD (3840 x 2160), IPS</p>
+                    <div class="price">13,500 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('HP Envy Laptop 17-cw0097nr', 13500)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+

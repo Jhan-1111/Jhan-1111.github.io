@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB Informatic - Monitores Gaming 144Hz</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1976d2;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .product-item {
+            background-color: #ffffff;
+            border: 2px solid #1976d2;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 15px;
+            position: relative;
+        }
+
+        .product-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-details {
+            padding: 10px;
+            min-height: 150px;
+            border-top: 1px solid #1976d2;
+            margin-top: 10px;
+        }
+
+        .product-details h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #0d47a1;
+            font-weight: bold;
+        }
+
+        .product-details p {
+            margin: 5px 0;
+            font-size: 15px;
+            color: #5e5e5e;
+        }
+
+        .price {
+            font-size: 22px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .buy-button {
+            background: linear-gradient(45deg, #ff5722, #ff7043);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(45deg, #ff7043, #ff5722);
+            transform: scale(1.05);
+        }
+
+        .product-item a {
+            text-decoration: none;
+        }
+
+        .back-button {
+            display: block;
+            margin: 30px auto;
+            padding: 14px 28px;
+            background-color: #1976d2;
+            color: white;
+            text-align: center;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            max-width: 300px;
+        }
+
+        .back-button:hover {
+            background-color: #0d47a1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Catálogo de Monitores Gaming 144Hz</h1>
+        <!-- Botón para volver a la página principal -->
+        <a href="index.html" class="back-button">Volver a la Página Principal</a>
+
+        <div class="product-grid">
+            <!-- Monitor 1 -->
+            <div class="product-item">
+                <img src="monitor1.jpg" alt="Monitor ASUS TUF Gaming 144Hz">
+                <div class="product-details">
+                    <h3>ASUS TUF Gaming 27"</h3>
+                    <p>Resolución 2560x1440, 144Hz, 1ms</p>
+                    <p>IPS, FreeSync Premium</p>
+                    <div class="price">2500 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('ASUS TUF Gaming 27"', 2500)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Monitor 2 -->
+            <div class="product-item">
+                <img src="monitor2.jpg" alt="Monitor MSI Optix 144Hz">
+                <div class="product-details">
+                    <h3>MSI Optix MAG272C</h3>
+                    <p>Resolución 1920x1080, 144Hz, 1ms</p>
+                    <p>Curvo, VA, FreeSync</p>
+                    <div class="price">2100 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('MSI Optix MAG272C', 2100)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Monitor 3 -->
+            <div class="product-item">
+                <img src="monitor3.webp" alt="Monitor AOC C24G1 144Hz">
+                <div class="product-details">
+                    <h3>AOC C24G1</h3>
+                    <p>Resolución 1920x1080, 144Hz, 1ms</p>
+                    <p>Curvo, VA, FreeSync</p>
+                    <div class="price">1800 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('AOC C24G1', 1800)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Monitor 4 -->
+            <div class="product-item">
+                <img src="monitor4.jpg" alt="Monitor Gigabyte G27QC 144Hz">
+                <div class="product-details">
+                    <h3>Gigabyte G27QC</h3>
+                    <p>Resolución 2560x1440, 144Hz, 1ms</p>
+                    <p>Curvo, VA, FreeSync Premium</p>
+                    <div class="price">2300 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Gigabyte G27QC', 2300)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Monitor 5 -->
+            <div class="product-item">
+                <img src="monitor5.jpg" alt="Monitor Samsung Odyssey G5 144Hz">
+                <div class="product-details">
+                    <h3>Samsung Odyssey G5</h3>
+                    <p>Resolución 2560x1440, 144Hz, 1ms</p>
+                    <p>Curvo, VA, FreeSync Premium</p>
+                    <div class="price">2400 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('Samsung Odyssey G5', 2400)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Monitor 6 -->
+            <div class="product-item">
+                <img src="monitor6.avif" alt="Monitor LG UltraGear 144Hz">
+                <div class="product-details">
+                    <h3>LG UltraGear 27GL650F</h3>
+                    <p>Resolución 1920x1080, 144Hz, 1ms</p>
+                    <p>IPS, FreeSync, G-Sync Compatible</p>
+                    <div class="price">2200 Bs</div>
+                    <a href="cart.html">
+                        <button class="buy-button" onclick="addToCart('LG UltraGear 27GL650F', 2200)">Comprar Ahora</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
