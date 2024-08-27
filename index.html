@@ -49,36 +49,37 @@
             align-items: center;
         }
 
-        /* Estilos para el carrusel principal */
-        .carousel-principal {
-            position: relative;
-            width: 300px; /* Ajusta el tamaño según la necesidad */
-            margin: 20px;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+       /* Estilos para el carrusel principal */
+.carousel-principal {
+    position: relative;
+    width: 300px; /* Ajusta el tamaño según la necesidad */
+    margin: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-        .carousel-images {
-            display: flex;
-            width: calc(100% * 13); /* Ajusta para el número total de imágenes */
-            animation: slide 30s linear infinite; /* Desplazamiento continuo sin pausas */
-        }
+.carousel-images {
+    display: flex;
+    width: calc(100% * 26); /* Ajusta para el número total de imágenes (original + duplicadas) */
+    animation: slideInfinite 30s linear infinite; /* Desplazamiento continuo */
+}
 
-        .carousel-images img {
-            width: calc(100% / 13); /* Ajusta para mostrar cada imagen en pantalla completa */
-            height: auto;
-            border-radius: 10px;
-        }
+.carousel-images img {
+    width: calc(100% / 26); /* Ajusta para mostrar cada imagen en pantalla completa (incluye duplicadas) */
+    height: auto;
+    border-radius: 10px;
+}
 
-        @keyframes slide {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
+/* Animación para el desplazamiento infinito */
+@keyframes slideInfinite {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Desplazamiento hasta la mitad (el final del primer conjunto de imágenes) */
+    }
+}
 
         /* Estilos para el título en pantallas pequeñas */
         @media (max-width: 768px) {
@@ -167,24 +168,36 @@
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-       /* Estilos para la cinta giratoria */
+       /* Estilos para el título dentro de la cinta giratoria */
+/* Estilos para el título dentro de la cinta giratoria */
+        /* Estilos para el título dentro de la cinta giratoria */
+.titulo-cinta {
+    text-align: center;
+    font-size: 1.5rem; /* Ajusta el tamaño del título */
+    color: #ffeb3b; /* Cambia el color según tu necesidad */
+    margin-bottom: 1px; /* Reduce el espacio debajo del título */
+    text-shadow: 0px 0px 10px #fff700; /* Efecto de sombra */
+    font-weight: bold; /* Resalta el título */
+}
+
+/* Ajustes adicionales para la cinta */
 .cinta {
-    width: 100%;
-    overflow: hidden;
-    background-color: #000;
-    padding: 20px 0;
-    margin: 40px 0;
+    position: relative;
+    text-align: center;
+    padding: 1px 0; /* Ajusta el padding según la altura que prefieras */
+    margin-top: 1px; /* Reduce el margen superior de la cinta */
+    margin-bottom: 1px; /* Ajusta el margen inferior si es necesario */
 }
 
 .cinta-contenido {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    animation: mover 5s linear infinite;
+    width: calc(100% * 8); /* Ajusta el ancho según el número total de imágenes */
+    animation: mover 30s linear infinite; /* Ajusta la duración de la animación según tu preferencia */
 }
 
 .cinta-contenido img {
-    margin: 0 30px;
+    margin: 0 15px; /* Ajusta el margen para asegurar que las imágenes estén más cercanas entre sí */
     filter: grayscale(100%);
     opacity: 0.8;
     transition: opacity 0.3s, filter 0.3s;
@@ -195,27 +208,32 @@
     opacity: 1;
 }
 
+/* Animación para mover la cinta */
 @keyframes mover {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-50%); /* Ajusta para recorrer la mitad del contenido total (incluyendo la duplicación) */
     }
 }
 
-/* Clonar el contenido para hacer el bucle infinito */
-.cinta-contenido:after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 100%;
-    background: inherit;
-    z-index: 1;
-}
+
+        /* Clonar el contenido para hacer el bucle infinito */
+        .cinta-contenido:after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background: inherit;
+            z-index: 1;
+        }
+
+
+
 
         nav ul {
     list-style-type: none;
@@ -288,7 +306,85 @@ nav ul li a:hover {
         flex-direction: column;
         gap: 10px;
     }}
-        
+        /* Estilos para la sección del combo en tema oscuro */
+.combo-section {
+    padding: 20px;
+    background-color: #1e1e1e; /* Fondo oscuro */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    color: #f5f5f5; /* Color de texto claro */
+}
+
+.combo-section h3 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #ffffff; /* Color de texto blanco */
+    text-shadow: 0px 0px 5px #333; /* Sombra ligera en el texto */
+}
+
+.combo-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#combo-select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    border: 2px solid #3edefa;
+    border-radius: 5px;
+    background-color: #333; /* Fondo más oscuro */
+    color: #f5f5f5; /* Texto claro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+#combo-select:hover,
+#combo-select:focus {
+    border-color: #1a91da;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    background-color: #444; /* Fondo ligeramente más claro al interactuar */
+}
+
+.buy-button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #1da1f2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #1a91da;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+    .combo-section {
+        padding: 15px;
+    }
+
+    #combo-select {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+
+    .buy-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+    
     </style>
 </head>
 <body>
@@ -315,6 +411,20 @@ nav ul li a:hover {
                         <img src="imagen11.jpeg" alt="Imagen 11">
                         <img src="imagen12.jpeg" alt="Imagen 12">
                         <img src="imagen13.jpeg" alt="Imagen 13">
+                         <!-- Clonar el contenido para la animación -->
+                         <img src="imagen1.jpeg" alt="Imagen 1">
+                         <img src="imagen2.jpeg" alt="Imagen 2">
+                         <img src="imagen3.jpeg" alt="Imagen 3">
+                         <img src="imagen4.jpeg" alt="Imagen 4">
+                         <img src="imagen5.jpeg" alt="Imagen 5">
+                         <img src="imagen6.jpeg" alt="Imagen 6">
+                         <img src="imagen7.jpeg" alt="Imagen 7">
+                         <img src="imagen8.jpeg" alt="Imagen 8">
+                         <img src="imagen9.jpeg" alt="Imagen 9">
+                         <img src="imagen10.jpeg" alt="Imagen 10">
+                         <img src="imagen11.jpeg" alt="Imagen 11">
+                         <img src="imagen12.jpeg" alt="Imagen 12">
+                         <img src="imagen13.jpeg" alt="Imagen 13">
                     </div>
                 </div>
             </div>
@@ -371,11 +481,20 @@ nav ul li a:hover {
     <!-- Imagen de título -->
 <section class="cinta">
     <div class="titulo-cinta">
-        <img src="B (1).png" alt="NUESTRAS MARCAS" width="180" class="mover-imagen">
+        <h2 style="color: #f6f62e; text-shadow: 0px 0px 10px #f1f152;">Nuestras Marcas</h2>
     </div>
 </section>
 
             <div class="cinta-contenido">
+                <img src="red_dragon.png" alt="Redragon" width="100">
+                <img src="samsung.png" alt="Samsung" width="100">
+                <img src="dagua.png" alt="Dahua" width="100">
+                <img src="corsair.png" alt="Corsair" width="100">
+                <img src="seagate.png" alt="Seagate" width="100">
+                <img src="republic.png" alt="Republic" width="100">
+                <img src="epson.png" alt="Epson" width="100">
+                <img src="predator.png" alt="Predator" width="100">
+                <img src="amd.png" alt="Amd" width="100">
                 <img src="omen.png" alt="Omen" width="100">
                 <img src="creative.png" alt="Creative" width="100">
                 <img src="nvidia.png" alt="Nvidia" width="100">
@@ -388,16 +507,17 @@ nav ul li a:hover {
                 <img src="dell.png" alt="Dell" width="100">
                 <img src="hp.png" alt="Hp" width="100">
                 <img src="marvo.png" alt="Marvo" width="100">
-                <img src="red_dragon.png" alt="Redragon" width="100">
-                <img src="samsung.png" alt="Samsung" width="100">
-                <img src="dagua.png" alt="Dahua" width="100">
-                <img src="corsair.png" alt="Corsair" width="100">
-                <img src="seagate.png" alt="Seagate" width="100">
-                <img src="republic.png" alt="Republic" width="100">
-                <img src="epson.png" alt="Epson" width="100">
-                <img src="predator.png" alt="Predator" width="100">
-                <img src="amd.png" alt="Amd" width="100">
+                
                 <!-- Clonar el contenido para la animación -->
+                <img src="red_dragon.png" alt="Redragon" width="100">
+                <img src="samsung.png" alt="Samsung" width="100">
+                <img src="dagua.png" alt="Dahua" width="100">
+                <img src="corsair.png" alt="Corsair" width="100">
+                <img src="seagate.png" alt="Seagate" width="100">
+                <img src="republic.png" alt="Republic" width="100">
+                <img src="epson.png" alt="Epson" width="100">
+                <img src="predator.png" alt="Predator" width="100">
+                <img src="amd.png" alt="Amd" width="100">
                 <img src="omen.png" alt="Omen" width="100">
                 <img src="creative.png" alt="Creative" width="100">
                 <img src="nvidia.png" alt="Nvidia" width="100">
@@ -410,15 +530,6 @@ nav ul li a:hover {
                 <img src="dell.png" alt="Dell" width="100">
                 <img src="hp.png" alt="Hp" width="100">
                 <img src="marvo.png" alt="Marvo" width="100">
-                <img src="red_dragon.png" alt="Redragon" width="100">
-                <img src="samsung.png" alt="Samsung" width="100">
-                <img src="dagua.png" alt="Dahua" width="100">
-                <img src="corsair.png" alt="Corsair" width="100">
-                <img src="seagate.png" alt="Seagate" width="100">
-                <img src="republic.png" alt="Republic" width="100">
-                <img src="epson.png" alt="Epson" width="100">
-                <img src="predator.png" alt="Predator" width="100">
-                <img src="amd.png" alt="Amd" width="100">
             </div>
         </section>
     </header>
@@ -579,9 +690,10 @@ nav ul li a:hover {
     
 
     <!-- Sección Nosotros -->
-    <section id="about" class="nosotros">
-        <h2>Sobre Nosotros</h2>
-        <p>En SB Informatic nos especializamos en ofrecer soluciones tecnológicas de alto rendimiento, desde computadoras de última generación hasta accesorios de calidad premium. Nos aseguramos de que cada producto cumpla con los más altos estándares de calidad. Ofrecemos garantía real en hardware y software en cualquiera de nuestros equipos, con envíos a nivel nacional.</p>
+        <section id="home" class="inicio">
+            <h2 style="color: #ffeb3b; text-shadow: 0px 0px 10px #fff700;">SOBRE NOSOTROS</h2>
+            <p style="color: #ffffff; text-shadow: 0px 0px 10px #ffffff;">En SB Informatic nos especializamos en ofrecer soluciones tecnológicas de alto rendimiento, desde computadoras de última generación hasta accesorios de calidad premium. Nos aseguramos de que cada producto cumpla con los más altos estándares de calidad. Ofrecemos garantía real en hardware y software en cualquiera de nuestros equipos, con envíos a nivel nacional.</p>
+            
     </section>
 
    

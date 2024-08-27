@@ -123,6 +123,7 @@
     height: auto;
     margin-right: 15px;
     
+    
 }
 
 select {
@@ -130,8 +131,8 @@ select {
     padding: 12px;
     font-size: 1rem;
     border: 2px solid #ddd;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #03050a;
+    color: #faf4f4;
     border-radius: 5px;
     transition: border-color 0.3s;
     min-height: 50px; /* Aumenta la altura mínima para que no se vea tan compacto */
@@ -341,7 +342,7 @@ button:hover {
                     <div>
                         <label for="motherboard">Tarjeta Madre Intel/AMD</label>
                         <div class="product-option">
-                            <img src="tarjetamadre1.png" alt="Tarjeta Madre ">
+                            <img src="tarjetamadre.png" alt="Tarjeta Madre ">
                             <select id="motherboard" name="motherboard">
                                  <!-- Placas madre Intel -->
                                  <optgroup label="Tarjetas Madre INTEL">
@@ -382,7 +383,7 @@ button:hover {
                 <div>
                     <label for="ram">Memoria RAM DDR4/DDR5</label>
                     <div class="product-option">
-                        <img src="Especial body combat (7).png" alt="Memoria RAM">
+                        <img src="memoriaram.png" alt="Memoria RAM">
                         <select id="ram" name="ram">
                             <!-- Memoria RAM DDR4 -->
                             <optgroup label="Memoria RAM DDR4">
@@ -752,6 +753,7 @@ button:hover {
         window.open(whatsappURL, '_blank');
         summaryModal.style.display = "none";
     }
+    
 
     function closeSummary() {
         summaryModal.style.display = "none";
@@ -766,6 +768,8 @@ button:hover {
         });
         updateTotal();
     }
+    
+
 </script>
 
 </body>
