@@ -1,0 +1,352 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estructura básica */
+body, html {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Contenedor principal */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para el header */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo-container {
+    flex: 1 1 150x;
+    text-align: center;
+}
+
+.header-content h1 {
+    flex: 1;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+/* Estilo general para la lista de navegación */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Alinea los elementos en una sola línea */
+    justify-content: space-around; /* Espacia los elementos uniformemente */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en la línea */
+}
+
+nav ul li {
+    margin: 5px;
+    flex: 1 1 100%; /* Hace que cada elemento ocupe toda la fila en pantallas pequeñas */
+    text-align: center;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    background-color: #444; /* Fondo de los cuadros */
+    color: #fff; /* Color del texto */
+    border: 2px solid #5dd6f5; /* Bordes de los cuadros */
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* Efecto al pasar el mouse por encima */
+nav ul li a:hover {
+    background-color: #22d7fc;
+    color: #000;
+}
+
+/* Diseño responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Hace que la lista se muestre en una columna en dispositivos pequeños */
+        align-items: center;
+    }
+
+    nav ul li {
+        flex: 1 1 auto; /* Permite que los elementos se ajusten */
+        width: 90%; /* Ajusta el ancho de los cuadros en dispositivos móviles */
+    }
+}
+
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 1200px) {
+    .header-content h1 {
+        font-size: 3rem;
+    }
+
+    .logo-container img {
+        width: 180px;
+    }
+
+    header nav ul {
+        gap: 30px;
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+
+    .logo-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Ajustes generales para los contenedores */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.logo-container {
+    flex: 0 0 150px;
+}
+
+.header-content h1 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 3em;
+    color: white;
+}
+
+/* Estilo para las imágenes y logos */
+.logo-container img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+}
+
+/* Íconos de WhatsApp y Carrito */
+.icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+    transition: transform 0.3s;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+/* Sección de la cinta */
+.cinta {
+    width: 100%;
+    overflow: hidden;
+    background-color: #000;
+    padding: 10px 0;
+    margin: 20px 0;
+    height: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.cinta-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: mover 0.5s linear infinite;
+}
+
+.cinta-contenido img {
+    margin: 0 15px;
+    height: 100px;
+    filter: grayscale(100%);
+    opacity: 0.8;
+    transition: opacity 0.3s, filter 0.3s;
+}
+
+.cinta-contenido img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+@keyframes mover {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Ajustes generales para las secciones */
+section {
+    padding: 60px 20px;
+}
+
+.inicio {
+    background-color: #131414;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.inicio h2 {
+    font-size: 28px;
+}
+
+.productos {
+    padding: 60px 20px;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-item {
+    background-color: #121212;
+    padding: 15px;
+    border: 1px solid #121212;
+    border-radius: 10px;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.product-item img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-item h3 {
+    color: #00bcd4;
+    margin-bottom: 10px;
+}
+
+/* Ajustes específicos para dispositivos móviles */
+@media (max-width: 600px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+
+    .product-item {
+        max-width: 100%;
+    }
+
+    .cinta-contenido img {
+        height: 60px;
+    }
+}
+
+/* Otros ajustes */
+footer {
+    background-color: #1c1c1c;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+}
+
+
+/* Estilos generales para el formulario de contacto */
+.contact-form {
+    background-color: #1c1c1c;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    color: #eaeaea;
+}
+
+.contact-form h2 {
+    font-size: 1.8em;
+    color: #ffeb3b;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #00bcd4;
+    outline: none;
+}
+
+.contact-form textarea {
+    height: 120px;
+    resize: none;
+}
+
+.contact-form button {
+    background-color: #00bcd4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #0097a7;
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .contact-form {
+        width: 90%;
+    }
+}
+
+
+
+
+
+
