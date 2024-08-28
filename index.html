@@ -48,6 +48,16 @@
             justify-content: center;
             align-items: center;
         }
+        .like-button {
+            font-size: 24px;
+            color: #007bff;
+            cursor: pointer;
+        }
+        .like-counter {
+            font-size: 18px;
+            margin-left: 10px;
+        }
+    
 
        /* Estilos para el carrusel principal */
 .carousel-principal {
@@ -388,6 +398,8 @@ nav ul li a:hover {
     </style>
 </head>
 <body>
+
+    
     <header>
         <div class="top-info">
             <p>correo: soporte@sbinformatic.com | cel. +59162276298 | cel. +59162373667</p>
@@ -749,6 +761,15 @@ nav ul li a:hover {
     }
 </script>
 
+<script>
+    let likeCount = 0;
+
+    function addLike() {
+        likeCount++;
+        document.getElementById('likeCounter').textContent = likeCount;
+    }
+</script>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 SB Informatic. Todos los derechos reservados.</p>
@@ -763,8 +784,12 @@ nav ul li a:hover {
                 <img src="linkedin (1).png" alt="linkedin" class="icon">
             </a>
         </div>
+        <div>
+            <span class="like-button" onclick="addLike()">👍</span>
+            <span class="like-counter" id="likeCounter">0</span>
+        </div>
     </footer>
-
+    
     <script src="scripts.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </body>
