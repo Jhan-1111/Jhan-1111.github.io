@@ -364,8 +364,8 @@ button:hover {
                                     <option value="A520 ASRock - 890 Bs">A520MR ASRock</option>
                                     <option value="B450 ASRock - 1030 Bs">B450 ASRock</option>
                                     <option value="B450 Pro 4S2 - 1050 Bs">B450 Pro 4S2 </option>
-                                    <option value="Asus A520M-K - 1100 Bs">Asus A520M-K </option>
-                                    <option value="Asus A520-H - 1180 Bs">Asus A520-H </option>
+                                    <option value="Asus A520MK - 1100 Bs">Asus A520M-K </option>
+                                    <option value="Asus A520H - 1180 Bs">Asus A520-H </option>
                                     <option value="B550 ASRock - 1050 Bs">B550 ASRock </option>
                                     <option value="B450 ASRock - 1450 Bs">B450 ASRock </option>
     
@@ -768,6 +768,25 @@ button:hover {
         });
         updateTotal();
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+    resetForm();
+});
+
+function resetForm() {
+    var selects = document.querySelectorAll('select');
+    selects.forEach(function(select) {
+        select.value = "0 Bs"; // Set the value to "0 Bs" for all select elements
+    });
+    // Ocultar todos los campos de texto personalizados
+    var customInputs = document.querySelectorAll('input[type="text"]');
+    customInputs.forEach(function(input) {
+        input.style.display = 'none';
+    });
+    // Reinicia el precio total
+    document.getElementById('totalPrice').textContent = 'Total: 0 Bs';
+}
+
     
 
 </script>
