@@ -431,6 +431,9 @@
 </head>
 
 <body>
+
+    
+
     <header>
         <h1>Tu Carrito de Compras</h1>
         <nav>
@@ -455,18 +458,34 @@
         <!-- Botón para abrir el modal -->
         <button class="modal-button" onclick="openModal()">Comprar</button>
 
-        <!-- Modal -->
-        <div id="purchaseModal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal()">&times;</span>
-                <h3>Detalles de tu Compra</h3>
-                <p id="purchaseDetails">Total a pagar: Bs. <span id="totalAmount">0.00</span></p>
-                <div id="productSummary"></div>
-                <p>Verifica los productos y presiona "Listo" para coordinar el pago en WhatsApp.</p>
-                <!-- Botón de "Listo" -->
-                <button class="ready-button" onclick="goToWhatsApp()">Listo</button>
-            </div>
-        </div>
+       <!-- Modal -->
+<div id="purchaseModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3>Detalles de tu Compra</h3>
+        <p id="purchaseDetails">Total a pagar: Bs. <span id="totalAmount">0.00</span></p>
+
+        <!-- Aquí va la tabla -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario (Bs)</th>
+                    <th>Total (Bs)</th>
+                </tr>
+            </thead>
+            <tbody id="productSummary">
+                <!-- Los productos se generarán dinámicamente aquí -->
+            </tbody>
+        </table>
+
+        <p>Verifica los productos y presiona "Listo" para coordinar el pago en WhatsApp.</p>
+        <!-- Botón de "Listo" -->
+        <button class="ready-button" onclick="goToWhatsApp()">Listo</button>
+    </div>
+</div>
+
 
 
 
@@ -667,38 +686,47 @@
                 loadCart();
             }
 
-             // Función para abrir el modal
-             function openModal() {
-                // Mostrar el modal
-                document.getElementById('purchaseModal').style.display = 'block';
+             
+            // Función para abrir el modal y llenar la tabla con el resumen de productos
+function openModal() {
+    // Mostrar el modal
+    document.getElementById('purchaseModal').style.display = 'block';
 
-                // Calcular el total y mostrarlo en el modal
-                const total = cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
-                document.getElementById('totalAmount').textContent = total;
+    // Calcular el total y mostrarlo en el modal
+    const total = cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
+    document.getElementById('totalAmount').textContent = total;
 
-                // Mostrar el resumen de productos
-                const productSummary = document.getElementById('productSummary');
-                productSummary.innerHTML = ''; // Limpiar cualquier contenido previo
+    // Mostrar el resumen de productos en la tabla
+    const productSummary = document.getElementById('productSummary');
+    productSummary.innerHTML = ''; // Limpiar cualquier contenido previo
 
-                cart.forEach((product) => {
-                    const productElement = document.createElement("p");
-                    productElement.textContent = `${product.quantity}x ${product.name} - Bs. ${product.price}`;
-                    productSummary.appendChild(productElement);
-                });
-            }
+    // Crear la estructura de la tabla
+    cart.forEach((product) => {
+        const productRow = `
+            <tr>
+                <td>${product.name}</td>
+                <td>${product.quantity}</td>
+                <td>Bs. ${product.price.toFixed(2)}</td>
+                <td>Bs. ${(product.price * product.quantity).toFixed(2)}</td>
+            </tr>
+        `;
+        productSummary.innerHTML += productRow;
+    });
+}
 
-            // Función para cerrar el modal
-            function closeModal() {
-                document.getElementById('purchaseModal').style.display = 'none';
-            }
+// Función para cerrar el modal
+function closeModal() {
+    document.getElementById('purchaseModal').style.display = 'none';
+}
 
-            // Cerrar el modal si se hace clic fuera de él
-            window.onclick = function(event) {
-                const modal = document.getElementById('purchaseModal');
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            };
+// Cerrar el modal si se hace clic fuera de él
+window.onclick = function(event) {
+    const modal = document.getElementById('purchaseModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};
+
 
             // Función para redirigir a WhatsApp con los detalles de la compra
             function goToWhatsApp() {
