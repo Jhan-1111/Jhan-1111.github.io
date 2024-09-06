@@ -410,9 +410,23 @@
             transition: background-color 0.3s ease;
         }
 
-        .ready-button:hover {
-            background-color: #388e3c;
-        }
+        .remove-button {
+    background-color: #007bff; /* Color azul */
+    color: white;
+    border: none;
+    padding: 2px 5px; /* Tamaño más pequeño */
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 12px; /* Texto más pequeño */
+    width: 25%; /* Ancho del botón reducido a una cuarta parte */
+    text-align: center; /* Centra el texto dentro del botón */
+}
+
+.remove-button:hover {
+    background-color: #0056b3; /* Azul más oscuro en hover */
+}
+
+
     </style>
 </head>
 
@@ -694,6 +708,47 @@
                 const whatsappUrl = `https://wa.me/59162276298?text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, "_blank");
             }
+
+            // Función para cargar el carrito desde localStorage y mostrarlo en la página
+function loadCart() {
+    const cartItemsContainer = document.getElementById("cartItems");
+    const totalPriceContainer = document.getElementById("totalPrice");
+
+    cartItemsContainer.innerHTML = "";
+    let totalPrice = 0;
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = "<p class='empty-cart'>Tu carrito está vacío.</p>";
+        totalPriceContainer.textContent = "Total a pagar: Bs. 0.00";
+        return;
+    }
+
+    cart.forEach((product, index) => {
+        const productElement = document.createElement("div");
+        productElement.className = "cart-item";
+        productElement.innerHTML = `
+            <span>${product.name}</span>
+            <span>Bs. ${product.price} x ${product.quantity}</span>
+            <span>Total: Bs. ${(product.price * product.quantity).toFixed(2)}</span>
+            <button class="remove-button" onclick="removeFromCart(${index})">Eliminar</button>
+        `;
+        cartItemsContainer.appendChild(productElement);
+
+        totalPrice += product.price * product.quantity;
+    });
+
+    totalPriceContainer.textContent = `Total a pagar: Bs. ${totalPrice.toFixed(2)}`;
+}
+
+// Función para eliminar un producto del carrito
+function removeFromCart(index) {
+    cart.splice(index, 1); // Elimina el producto en la posición `index`
+    localStorage.setItem("cart", JSON.stringify(cart)); // Actualiza el localStorage
+    loadCart(); // Recarga la vista del carrito
+}
+
+
+            
         </script>
 
     </div>
